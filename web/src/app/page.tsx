@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { QrCode, Send, Upload, ShieldCheck, Laptop, Smartphone, CheckCircle, ArrowRight } from 'lucide-react';
+import { QrCode, Send, Upload, ShieldCheck, Laptop, Smartphone, CheckCircle } from 'lucide-react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 
-export default function HomePage() {
+function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -37,7 +37,6 @@ export default function HomePage() {
 
         scanner.render(
           (decodedText) => {
-            // Decoded text could be a URL like https://qrb.vercel.app/session/abc12345 or direct session ID
             scanner.clear();
             setIsScanning(false);
 
@@ -52,9 +51,7 @@ export default function HomePage() {
               handleSendToSession(sessionId);
             }
           },
-          (error) => {
-            // scanning errors ignored
-          }
+          () => {}
         );
 
         scannerRef.current = scanner;
@@ -253,5 +250,17 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-[400px] text-slate-400 text-sm">
+        Loading QRB...
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
