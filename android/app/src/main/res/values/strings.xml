@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">QRB Share</string>
     <string name="share_target_label">Share via QRB</string>
-    <string name="web_app_url">https://qrb.vercel.app</string>
+    <string name="web_app_url">https://qrb-navy.vercel.app</string>
 </resources>

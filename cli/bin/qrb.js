@@ -17,10 +17,14 @@ program
   .description('Start listener & generate QR code to receive content from mobile')
   .option('-p, --port <number>', 'Local server port', '4000')
   .option('-d, --dir <path>', 'Save directory for received files')
-  .option('-s, --server <url>', 'QRB relay server URL', 'https://qrb.vercel.app')
+  .option('-s, --server <url>', 'QRB relay server URL')
   .option('--no-clipboard', 'Disable automatic copying of received text to clipboard')
   .action(async (options) => {
     try {
+      const config = getConfig();
+      if (!options.server) {
+        options.server = config.relayServer;
+      }
       await startReceiveSession(options);
     } catch (err) {
       console.error(chalk.red(`\n[QRB Error] ${err.message}`));
