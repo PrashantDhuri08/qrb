@@ -1,0 +1,10 @@
+[project]
+name = "qrb-server"
+version = "0.1.0"
+description = "QRB (QR Bridge) Python Relay Server"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "python-multipart>=0.0.9",
+    "websockets>=12.0"
+]

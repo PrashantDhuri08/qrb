@@ -1,0 +1,35 @@
+{
+  "name": "qrb",
+  "version": "1.0.0",
+  "description": "QR Bridge - Instantly receive text and files from phone to PC via QR code",
+  "main": "bin/qrb.js",
+  "bin": {
+    "qrb": "bin/qrb.js"
+  },
+  "scripts": {
+    "start": "node bin/qrb.js receive",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "qr",
+    "clipboard",
+    "file-transfer",
+    "cli",
+    "android-share",
+    "qrb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "clipboardy": "^3.0.0",
+    "commander": "^11.1.0",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^2.7.0",
+    "ora": "^5.4.1",
+    "qrcode-terminal": "^0.12.0",
+    "ws": "^8.16.0"
+  }
+}
